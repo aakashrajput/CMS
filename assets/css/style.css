@@ -43,3 +43,37 @@ footer {
   line-height:50px;
   letter-spacing:1px;
 }
+
+.popular {
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+}
+
+.popular img {
+  width:50%;
+  margin-top:12px;
+}
+
+section .widgets {
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.popularpost-head {
+  position:absolute;
+  margin-left:-110px;
+}
+.popularpost-para {
+  position:absolute;
+  margin-top:30px;
+  margin-left:-110px;
+  font-family:arial !important;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.popular .details {
+  margin-left:-5px;
+  margin-top:20px;
+}
