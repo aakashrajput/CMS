@@ -1,5 +1,6 @@
 body {
   font-family: 'Pacifico', cursive !important;
+  background:#eeeded !important;
 }
 /*a {
   color:#fff !important;
@@ -33,4 +34,12 @@ body {
 
 .jumbotron #details span {
   color:red;
+}
+
+footer {
+  background: #000;
+  color:#fff;
+  height:50px;
+  line-height:50px;
+  letter-spacing:1px;
 }
