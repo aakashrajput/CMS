@@ -47,7 +47,8 @@ footer {
 .popular {
   background:#fff;
   padding:20px;
-  border-radius:20px;
+  border-radius:10px;
+  border:1px solid #e3e3e3;
 }
 
 .popular img {
@@ -76,4 +77,20 @@ section .widgets {
 .popular .details {
   margin-left:-5px;
   margin-top:20px;
+}
+
+.popular ul li {
+  list-style:none;
+}
+
+.popular .row2 {
+  margin-left:50px;
+}
+
+.popular i {
+  color:#000;
+  
+}
+.popular i:hover {
+  color:#333;
 }
