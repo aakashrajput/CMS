@@ -1,0 +1,36 @@
+body {
+  font-family: 'Pacifico', cursive !important;
+}
+/*a {
+  color:#fff !important;
+}*/
+.bg-black {
+  background-color:#000 !important;
+}
+.navbar-brand img {
+  margin-top:-5px;
+}
+
+.navbar-brand *{
+  color:#fff !important;
+}
+
+.jumbotron {
+  height:200px;
+  overflow:hidden;
+}
+
+.jumbotron #details {
+  margin-top:50px;
+  position:absolute;
+}
+
+.jumbotron img {
+  width:110%;
+  margin-top:-50px;
+  margin-left:-50px;
+}
+
+.jumbotron #details span {
+  color:red;
+}
