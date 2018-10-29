@@ -1,5 +1,5 @@
 body {
-  font-family: 'Pacifico', cursive !important;
+  font-family: 'Lobster' !important;
   background:#eeeded !important;
 }
 /*a {
@@ -95,7 +95,37 @@ section .widgets {
   color:#333;
 }
 
+.coursel {
+  border-radius:20px;
+}
 .carousel-inner img {
       width: 100%;
       height: 100%;
+      border-radius:20px;
+  }
+
+  .post {
+    background: #fff;
+    border:1px solid #e3e3e3;
+    margin:15px 0px;
+  }
+
+  .post .post-date {
+    padding:20px;
+    text-align:center:
+  }
+
+  .post .post-date .day {
+    font-size : 30px;
+      color : #24A7CF;
+  }
+
+  .post .post-date .month {
+    font-size:18px;
+
+  }
+  .post .post-date .year {
+    font-size:18px;
+    font-weight:100;
+
   }
