@@ -132,4 +132,18 @@ section .widgets {
 
   .post .post-title span {
     color : #24A7CF;
+    font-weight:100;
+    margin-left:10px;
+  }
+
+  .post .profile-picture {
+    padding:20px;
+  }
+
+  .post .profile-picture img {
+    width:80%;
+  }
+
+  .post > a > img {
+    width:100%;
   }
