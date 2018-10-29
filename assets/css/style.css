@@ -112,7 +112,8 @@ section .widgets {
 
   .post .post-date {
     padding:20px;
-    text-align:center:
+    text-align:center;
+    border-right:1px solid #e3e3e3;
   }
 
   .post .post-date .day {
@@ -120,12 +121,15 @@ section .widgets {
       color : #24A7CF;
   }
 
-  .post .post-date .month {
-    font-size:18px;
-
-  }
   .post .post-date .year {
-    font-size:18px;
     font-weight:100;
 
+  }
+
+  .post .post-title {
+    padding:20px;
+  }
+
+  .post .post-title span {
+    color : #24A7CF;
   }
