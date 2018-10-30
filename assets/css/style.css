@@ -113,7 +113,6 @@ section .widgets {
   .post .post-date {
     padding:20px;
     text-align:center;
-    border-right:1px solid #e3e3e3;
   }
 
   .post .post-date .day {
@@ -127,7 +126,8 @@ section .widgets {
   }
 
   .post .post-title {
-    padding:20px;
+    padding:5px 20px;
+    border-left:1px solid #e3e3e3;
   }
 
   .post .post-title span {
@@ -146,4 +146,29 @@ section .widgets {
 
   .post > a > img {
     width:100%;
+  }
+
+  .post .desc {
+    font-family: Arial;
+    font-weoght:100;
+    padding:15px;
+    line-height:20px;
+  }
+
+  .post >a.btn {
+    margin-left:15px;
+    margin-bottom:20px;
+  }
+
+  .post .bottom {
+    padding:10px 20px;
+    border-top:1px solid #e3e3e3;
+    color:#c6c6c6;
+  }
+
+  .post .bottom .first {
+    margin-right:20px;
+  }
+  .post .bottom .second {
+    margin-left:20px;
   }
