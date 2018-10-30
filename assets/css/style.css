@@ -172,3 +172,13 @@ section .widgets {
   .post .bottom .second {
     margin-left:20px;
   }
+
+  nav .pagination1 {
+    text-align:center;
+  }
+
+  .pagination > li > a {
+    color:#24A7CF;
+    padding:15px 24px;
+    font-size:1em;
+  }
