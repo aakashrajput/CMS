@@ -41,7 +41,7 @@
             </div>
           </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html"><i class="fas fa-phone"></i> Contact Us</a>
+              <a class="nav-link" href="contactus.html"><i class="fas fa-phone"></i> Contact Us</a>
             </li>
           </ul>
         </div>
@@ -49,7 +49,7 @@
     <div class="jumbotron">
       <div class="container">
         <div id="details" class="animated fadeInLeft">
-          <h1 style="font-family: 'Pacifico', cursive;">Poké Contact<span>Us!</span></h1>
+          <h1 style="font-family: 'Pacifico', cursive;">Poké <span>Blog</span></h1>
           <p style="font-family: 'Pacifico', cursive;">Learn wth us all about Pokémon!</p>
         </div>
       </div>
@@ -59,136 +59,30 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img class="d-block w-100" src="assets/img/slider-1.png" alt="First slide">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Slider 1</h5>
-                    <p>slider one paragraph</p>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="assets/img/slider-2.jpg" alt="Second slide">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Slider 2</h5>
-                    <p>slider two paragraph</p>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="assets/img/slider-3.png" alt="Third slide">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Slider 3</h5>
-                    <p>Slider 3 paragraph</p>
-                  </div>
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
+          <div class="row">
+            <div class="col-md-12">
+              <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=2weds'></script><div style='overflow:hidden;height:385px;width:100%;'><div id='gmap_canvas' style='height:385px;width:100%;'></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div> <a href='https://mapswebsite.net/'>embed google map in website</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=c518e0cf3f9bbaf6a34283c1aec06a38c3d47c9b'></script><script type='text/javascript'>function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(28.61559674039671,77.20902120000005),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(28.61559674039671,77.20902120000005)});infowindow = new google.maps.InfoWindow({content:'<strong>Poke Blog</strong><br>New Delhi<br>110021 Delhi<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
             </div>
-            <div class="post">
-              <div class="row">
-                <div class="col-md-2 post-date">
-                  <div class="day">16</div>
-                  <div class="month">Jan</div>
-                  <div class="year">2019</div>
+            <div class="col-md-12 contact-form">
+              <h2>Contact Form</h2>
+              <form action="">
+                <div class="form-group">
+                  <label for="full-name">Full Name:</label>
+                  <input type="text" id="full-name" class="form-control" placeholder="Full Name.">
                 </div>
-                <div class="col-md-8 post-title">
-                  <a href="#"><h2>This is demo heading for post one!</h2></a>
-                  <p>Written By: <span>IndianCharizard</span></p>
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="text" id="email" class="form-control" placeholder="Email">
                 </div>
-                <div class="col-md-2 profile-picture">
-                  <img src="assets/img/icon.png" alt="profile picture" class="img-circle"/>
+                <div class="form-group">
+                  <label for="message">Message:</label>
+                  <textarea  class="form-control" placeholder="Your Message here..." id="message" cols="30" rows="10"></textarea>
                 </div>
-              </div>
-              <a href="#"><img src="assets/img/slider-3.png" alt="Post Image"></a>
-              <p class="desc">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
-              <a href="#" class="btn btn-primary">Read More...</a>
-              <div class="bottom">
-                <span class="first"><i class="fa fa-folder"></i><a href="#"> Category</a></span>|
-                <span class="second"><i class="fa fa-comment"></i><a href="#"> Comments</a></span>
-              </div>
-            </div>
-            <div class="post">
-              <div class="row">
-                <div class="col-md-2 post-date">
-                  <div class="day">16</div>
-                  <div class="month">Jan</div>
-                  <div class="year">2019</div>
-                </div>
-                <div class="col-md-8 post-title">
-                  <a href="#"><h2>This is demo heading for post one!</h2></a>
-                  <p>Written By: <span>IndianCharizard</span></p>
-                </div>
-                <div class="col-md-2 profile-picture">
-                  <img src="assets/img/icon.png" alt="profile picture" class="img-circle"/>
-                </div>
-              </div>
-              <a href="#"><img src="assets/img/slider-3.png" alt="Post Image"></a>
-              <p class="desc">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
-              <a href="#" class="btn btn-primary">Read More...</a>
-              <div class="bottom">
-                <span class="first"><i class="fa fa-folder"></i><a href="#"> Category</a></span>|
-                <span class="second"><i class="fa fa-comment"></i><a href="#"> Comments</a></span>
-              </div>
-            </div>
-            <div class="post">
-              <div class="row">
-                <div class="col-md-2 post-date">
-                  <div class="day">16</div>
-                  <div class="month">Jan</div>
-                  <div class="year">2019</div>
-                </div>
-                <div class="col-md-8 post-title">
-                  <a href="#"><h2>This is demo heading for post one!</h2></a>
-                  <p>Written By: <span>IndianCharizard</span></p>
-                </div>
-                <div class="col-md-2 profile-picture">
-                  <img src="assets/img/icon.png" alt="profile picture" class="img-circle"/>
-                </div>
-              </div>
-              <a href="#"><img src="assets/img/slider-3.png" alt="Post Image"></a>
-              <p class="desc">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
-              <a href="#" class="btn btn-primary">Read More...</a>
-              <div class="bottom">
-                <span class="first"><i class="fa fa-folder"></i><a href="#"> Category</a></span>|
-                <span class="second"><i class="fa fa-comment"></i><a href="#"> Comments</a></span>
-              </div>
-            </div>
 
-            <center><nav aria-label="..." class="pagination1">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#">Previous</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                  </span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav></center>
+                <input type="submit" name="submit" value="submit" class="btn btn-primary">
+              </form>
+            </div>
+          </div>
         </div>
         <div class="col-md-4">
           <div class="col-lg-6">

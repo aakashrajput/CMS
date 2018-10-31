@@ -183,6 +183,19 @@ section .widgets {
     font-size:1em;
   }
 
+  .contact-form {
+    background: #fff;
+    padding: 50px 25px;
+  }
+
+  .contact-form h2 {
+    color:#24A7CF;
+  }
+
+  .contact-form textarea {
+    resize: none;
+  }
+
   @media (max-width:786px){
     .jumbotron #details {
       margin-top:60px;
