@@ -196,6 +196,19 @@ section .widgets {
     resize: none;
   }
 
+  .related-posts {
+    background: #fff;
+    padding:20px;
+  }
+
+  .related-posts img {
+    width:100%;
+  }
+
+  .related-posts h3 {
+    color: #24A7CF;
+  }
+
   @media (max-width:786px){
     .jumbotron #details {
       margin-top:60px;
