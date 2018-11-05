@@ -199,6 +199,7 @@ section .widgets {
   .related-posts {
     background: #fff;
     padding:20px;
+    margin-bottom:15px;
   }
 
   .related-posts img {
@@ -209,6 +210,24 @@ section .widgets {
     color: #24A7CF;
   }
 
+  .author {
+    background: #fff;
+    padding: 20px;
+    margin-bottom:15px;
+  }
+
+  .author img {
+    width:100%;
+  }
+
+  .author h4{
+    color:#24A7CF;
+    text-decoration: underline;
+  }
+
+  .author p{
+    font-weight: 100;
+  }
   @media (max-width:786px){
     .jumbotron #details {
       margin-top:60px;
@@ -235,6 +254,25 @@ section .widgets {
     footer {
       font-size:15px;
       letter-spacing: 0px;
+    }
+    .author {
+      background: #fff;
+      padding: 20px;
+      margin-bottom:15px;
+      text-align:center;
+    }
+
+    .author img {
+      width:30%;
+    }
+
+    .author h4{
+      color:#24A7CF;
+      text-decoration: underline;
+    }
+
+    .author p{
+      font-weight: 100;
     }
   }
 
