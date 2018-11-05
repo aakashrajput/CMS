@@ -259,6 +259,10 @@ section .widgets {
     background: #fff;
     padding:20px;
   }
+
+  .comment-box textarea {
+    resize:none;
+  }
   @media (max-width:786px){
     .jumbotron #details {
       margin-top:60px;
