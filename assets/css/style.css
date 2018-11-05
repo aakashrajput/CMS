@@ -228,6 +228,31 @@ section .widgets {
   .author p{
     font-weight: 100;
   }
+
+  .comment {
+    background: #fff;
+    padding:20px;
+    margin-bottom:15px;
+  }
+
+  .comment h3 {
+    color: #24A7CF;
+  }
+
+  .comment h4 {
+    color: #24A7CF;
+  }
+
+  .comment p{
+    font-weight: 100;
+  }
+  .comment img {
+    width:80%;
+  }
+
+  .comment .single-comment {
+    margin-bottom: 10px;
+  }
   @media (max-width:786px){
     .jumbotron #details {
       margin-top:60px;
@@ -273,6 +298,32 @@ section .widgets {
 
     .author p{
       font-weight: 100;
+    }
+
+    .comment {
+      background: #fff;
+      padding:20px;
+      margin-bottom:15px;
+    }
+
+    .comment h3 {
+      color: #24A7CF;
+    }
+
+    .comment h4 {
+      color: #24A7CF;
+    }
+
+    .comment p{
+      font-weight: 100;
+    }
+    .comment img {
+      width:30%;
+    }
+
+    .comment .single-comment {
+      margin-bottom: 10px;
+      text-align:center;
     }
   }
 
