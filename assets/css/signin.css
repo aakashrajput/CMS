@@ -11,6 +11,9 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background:linear-gradient(pink, blue);
+  background:-o-linear-gradient(pink, blue);
+  background:-moz-linear-gradient(pink, blue);
+  background:-webkit-linear-gradient(pink, blue);
 }
 
 .form-signin {
