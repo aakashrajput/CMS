@@ -253,6 +253,12 @@ section .widgets {
   .comment .single-comment {
     margin-bottom: 10px;
   }
+
+  .comment-box {
+    margin-bottom: 15px;
+    background: #fff;
+    padding:20px;
+  }
   @media (max-width:786px){
     .jumbotron #details {
       margin-top:60px;
