@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index.php"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-file"></i> Pages</a>
@@ -41,7 +41,7 @@
             </div>
           </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html"><i class="fas fa-phone"></i> Contact Us</a>
+              <a class="nav-link" href="contact.php"><i class="fas fa-phone"></i> Contact Us</a>
             </li>
           </ul>
         </div>
