@@ -1,3 +1,4 @@
+<?php include ("db.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,8 +37,20 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-list-ul"></i> Categories</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Category 1</a>
-              <a class="dropdown-item" href="#">Category 2</a>
+              <?php
+               $query = "SELECT * FROM categories ORDER BY id DESC";
+                $run = mysqli_query($link,$query);
+                if(mysqli_num_rows($run) > 0) {
+                  while($row = mysqli_fetch_array($run)) {
+                    $id = $row['id'];
+                    $category = $row['category'];
+                      echo "<a class='dropdown-item' href='index.php?at=".$id."'>$category</a>";
+                  }
+                }
+                else {
+                  echo "<a class='dropdown-item' href='#'>No Category</a>";
+                }
+              ?>
             </div>
           </li>
             <li class="nav-item">

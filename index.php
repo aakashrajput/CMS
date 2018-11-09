@@ -43,6 +43,29 @@ include ("include/header.php");
                 <span class="sr-only">Next</span>
               </a>
             </div>
+
+            <?php
+
+              $query = "SELECT * FROM posts WHERE status = 'publish' ORDER BY id DISC";
+              $run = mysqli_query($link,$query);
+              if(mysqli_num_rows($run) > 0){
+                while ($row = mysqli_fetch_array($run)){
+                  $id = $row['id'];
+                  $date = $row['date'];
+                  $title = $row['title'];
+                  $author = $row['author'];
+                  $author_image = $row['author_image'];
+                  $categories = $row['categories'];
+                  $tags = $row['tags'];
+                  $post_dta = $row['post_data'];
+                  $views = $row['views'];
+                  $status = $row['status'];
+                  $image = $row['image'];
+
+
+
+             ?>
+
             <div class="post">
               <div class="row">
                 <div class="col-md-2 post-date">
@@ -68,6 +91,15 @@ include ("include/header.php");
                 <span class="second"><i class="fa fa-comment"></i><a href="#"> Comments</a></span>
               </div>
             </div>
+
+            <?php
+          }
+           }
+            else {
+              echo "<Center><h2>No Posts Available</h2></center>"
+            }
+            ?>
+
             <div class="post">
               <div class="row">
                 <div class="col-md-2 post-date">
