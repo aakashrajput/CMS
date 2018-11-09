@@ -5,34 +5,50 @@ include ("include/header.php");
     <div class="container">
       <div class="row">
         <div class="col-md-8">
+          <?php
+              $slider_query = "SELECT * FROM posts WHERE status = 'publish' ORDER BY id DESC LIMIT 5";
+              $slider_run = mysqli_query($link, $slider_query);
+              if (mysqli_num_rows($slider_run) > 0) {
+                $count = mysqli_num_rows($slider_run);
+            ?>
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <?php
+
+                  for($i= 0; $i < $count; $i++){
+                    if($i == 0){
+                      echo "<li data-target='#carouselExampleIndicators' data-slide-to='".$i."' class='active'></li>";
+                    }
+                    else {
+                      echo "<li data-target='#carouselExampleIndicators' data-slide-to='".$i."'></li>";
+                    }
+                  }
+
+                 ?>
               </ol>
               <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img class="d-block w-100" src="assets/img/slider-1.png" alt="First slide">
+                <?php
+                $check = 0;
+                while($slider_row = mysqli_fetch_array($slider_run)) {
+                  $slider_id = $slider_row['id'];
+                  $slider_image = $slider_row['image'];
+                  $slider_title = $slider_row['title'];
+                  $slider_data = $slider_row['post_data'];
+                  $check = $check + 1;
+                  if($check==1){
+                    echo "<div class='carousel-item active'>";
+                  }
+                  else {
+                    echo "<div class='carousel-item'>";
+                  }
+                 ?>
+                  <a href="post.php?post_id=<?php echo $slider_id; ?>"><img class="d-block w-100" src="assets/img/<?php echo $slider_image; ?>"></a>
                   <div class="carousel-caption d-none d-md-block">
-                    <h5>Slider 1</h5>
-                    <p>slider one paragraph</p>
+                    <h5><?php echo $slider_title; ?></h5>
+                    <p><?php echo substr($slider_data,0,200); ?></p>
                   </div>
                 </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="assets/img/slider-2.jpg" alt="Second slide">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Slider 2</h5>
-                    <p>slider two paragraph</p>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="assets/img/slider-3.png" alt="Third slide">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Slider 3</h5>
-                    <p>Slider 3 paragraph</p>
-                  </div>
-                </div>
+              <?php } ?>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -116,6 +132,9 @@ include ("include/header.php");
                 </li>
               </ul>
             </nav></center>
+            <?php
+                }
+             ?>
         </div>
         <div class="col-md-4">
           <?php include("include/sidebar.php") ?>
