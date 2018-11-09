@@ -46,110 +46,59 @@ include ("include/header.php");
 
             <?php
 
-              $query = "SELECT * FROM posts WHERE status = 'publish' ORDER BY id DISC";
+              $query = "SELECT * FROM posts WHERE status = 'publish' ORDER BY id DESC";
               $run = mysqli_query($link,$query);
               if(mysqli_num_rows($run) > 0){
                 while ($row = mysqli_fetch_array($run)){
                   $id = $row['id'];
-                  $date = $row['date'];
+                  $date = getdate ($row['date']);
+                  $day = $date['mday'];
+                  $month = $date['month'];
+                  $year = $date['year'];
                   $title = $row['title'];
                   $author = $row['author'];
                   $author_image = $row['author_image'];
                   $categories = $row['categories'];
                   $tags = $row['tags'];
-                  $post_dta = $row['post_data'];
+                  $post_data = $row['post_data'];
                   $views = $row['views'];
                   $status = $row['status'];
                   $image = $row['image'];
-
-
-
              ?>
 
             <div class="post">
               <div class="row">
                 <div class="col-md-2 post-date">
-                  <div class="day">16</div>
-                  <div class="month">Jan</div>
-                  <div class="year">2019</div>
+                  <div class="day"><?php echo $day; ?></div>
+                  <div class="month"><?php echo $month; ?></div>
+                  <div class="year"><?php echo $year; ?></div>
                 </div>
                 <div class="col-md-8 post-title">
-                  <a href="#"><h2>This is demo heading for post one!</h2></a>
-                  <p>Written By: <span>IndianCharizard</span></p>
+                  <a href="post.php?post_id=<?php echo $id; ?>"><h2><?php echo $title; ?></h2></a>
+                  <p>Written By: <span><?php echo ucfirst($author); ?></span></p>
                 </div>
                 <div class="col-md-2 profile-picture">
-                  <img src="assets/img/icon.png" alt="profile picture" class="img-circle"/>
+                  <img src="assets/img/<?php echo $author_image; ?>" alt="profile picture" class="img-circle" />
                 </div>
               </div>
-              <a href="#"><img src="assets/img/slider-3.png" alt="Post Image"></a>
+              <a href="post.php?post_id=<?php echo $id; ?>"><img src="assets/img/<?php echo $image; ?>" alt="Post Image"></a>
               <p class="desc">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                <?php echo substr($post_data,0,300); ?> .........
               </p>
-              <a href="#" class="btn btn-primary">Read More...</a>
+              <a href="post.php?post_id=<?php echo $id; ?>" class="btn btn-primary">Read More...</a>
               <div class="bottom">
-                <span class="first"><i class="fa fa-folder"></i><a href="#"> Category</a></span>|
+                <span class="first"><i class="fa fa-folder"></i><a href="#"> <?php echo ucfirst($categories); ?></a></span>|
                 <span class="second"><i class="fa fa-comment"></i><a href="#"> Comments</a></span>
               </div>
             </div>
 
             <?php
-          }
-           }
-            else {
-              echo "<Center><h2>No Posts Available</h2></center>"
-            }
+                }
+                 }
+                  else {
+                    echo "<Center><h2>No Posts Available</h2></center>";
+                  }
             ?>
-
-            <div class="post">
-              <div class="row">
-                <div class="col-md-2 post-date">
-                  <div class="day">16</div>
-                  <div class="month">Jan</div>
-                  <div class="year">2019</div>
-                </div>
-                <div class="col-md-8 post-title">
-                  <a href="#"><h2>This is demo heading for post one!</h2></a>
-                  <p>Written By: <span>IndianCharizard</span></p>
-                </div>
-                <div class="col-md-2 profile-picture">
-                  <img src="assets/img/icon.png" alt="profile picture" class="img-circle"/>
-                </div>
-              </div>
-              <a href="#"><img src="assets/img/slider-3.png" alt="Post Image"></a>
-              <p class="desc">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
-              <a href="#" class="btn btn-primary">Read More...</a>
-              <div class="bottom">
-                <span class="first"><i class="fa fa-folder"></i><a href="#"> Category</a></span>|
-                <span class="second"><i class="fa fa-comment"></i><a href="#"> Comments</a></span>
-              </div>
-            </div>
-            <div class="post">
-              <div class="row">
-                <div class="col-md-2 post-date">
-                  <div class="day">16</div>
-                  <div class="month">Jan</div>
-                  <div class="year">2019</div>
-                </div>
-                <div class="col-md-8 post-title">
-                  <a href="#"><h2>This is demo heading for post one!</h2></a>
-                  <p>Written By: <span>IndianCharizard</span></p>
-                </div>
-                <div class="col-md-2 profile-picture">
-                  <img src="assets/img/icon.png" alt="profile picture" class="img-circle"/>
-                </div>
-              </div>
-              <a href="#"><img src="assets/img/slider-3.png" alt="Post Image"></a>
-              <p class="desc">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
-              <a href="#" class="btn btn-primary">Read More...</a>
-              <div class="bottom">
-                <span class="first"><i class="fa fa-folder"></i><a href="#"> Category</a></span>|
-                <span class="second"><i class="fa fa-comment"></i><a href="#"> Comments</a></span>
-              </div>
-            </div>
 
             <center><nav aria-label="..." class="pagination1">
               <ul class="pagination">
