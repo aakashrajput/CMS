@@ -63,15 +63,16 @@ section .widgets {
 
 .popularpost-head {
   position:absolute;
-  margin-left:-110px;
+  margin-left: 180px;
+  margin-top: -90px;
 }
 .popularpost-para {
-  position:absolute;
-  margin-top:30px;
-  margin-left:-110px;
-  font-family:arial !important;
-  font-size:12px;
-  font-weight:bold;
+  position: absolute;
+    margin-top: -50px;
+    margin-left: 180px;
+    font-family: arial !important;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .popular .details {
