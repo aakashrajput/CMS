@@ -115,7 +115,7 @@
               }
 
             } else {
-                echo "<p>No Category</p>";
+                echo "<p>No Category</p>"
             }
             ?>
           </ul>
