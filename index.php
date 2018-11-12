@@ -1,12 +1,25 @@
 <?php
 include ("include/header.php");
 $number_of_posts = 3;
-if (isset($_GET['page'])){
+
+if(isset($_GET['page'])){
   $page_id = $_GET['page'];
 }else {
   $page_id = 1;
 }
+
+if(isset($_GET['cat'])) {
+  $cat_id = $_GET['cat'];
+  $cat_query = "SELECT * FROM categories WHERE id = $cat_id";
+  $cat_run = mysqli_query($link, $cat_query);
+  $cat_row = mysqli_fetch_array($cat_run);
+  $cat_name = $cat_row['category'];
+}
+
 $all_posts_query = "SELECT * FROM posts WHERE status = 'publish'";
+if(isset($cat_name)){
+  $all_posts_query .= " and categories = '$cat_name'";
+}
 $all_posts_run = mysqli_query($link,$all_posts_query);
 $all_posts = mysqli_num_rows($all_posts_run);
 $total_pages = ceil($all_posts / $number_of_posts);
@@ -73,7 +86,11 @@ $posts_start_from = ($page_id - 1) * $number_of_posts;
 
             <?php
 
-              $query = "SELECT * FROM posts WHERE status = 'publish' ORDER BY id DESC LIMIT $posts_start_from, $number_of_posts";
+              $query = "SELECT * FROM posts WHERE status = 'publish'";
+              if(isset($cat_name)){
+                $query .= "and categories = '$cat_name'";
+              }
+              $query .= "ORDER BY id DESC LIMIT $posts_start_from, $number_of_posts";
               $run = mysqli_query($link,$query);
               if(mysqli_num_rows($run) > 0){
                 while ($row = mysqli_fetch_array($run)){
@@ -131,7 +148,7 @@ $posts_start_from = ($page_id - 1) * $number_of_posts;
             <ul class="pagination">
               <?php
                for($i = 1; $i <= $total_pages; $i++){
-                  echo "<li class='page-item ".($page_id == $i ? 'active':'')."'><a class='page-link' href='index.php?page=".$i."'>$i</a></li>";
+                  echo "<li class='page-item ".($page_id == $i ? 'active':'')."'><a class='page-link' href='index.php?page=".$i."&".(isset($cat_name)?"cat=$cat_id":"")."'>$i</a></li>";
               }
               ?>
             </ul>

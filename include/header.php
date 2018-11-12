@@ -18,7 +18,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-black">
-        <a class="navbar-brand" href="#"><img src="assets/img/icon.png" alt="logo" width="70px">Poké</a>
+        <a class="navbar-brand" href="./"><img src="assets/img/icon.png" alt="logo" width="70px">Poké</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,7 +44,7 @@
                   while($row = mysqli_fetch_array($run)) {
                     $id = $row['id'];
                     $category = $row['category'];
-                      echo "<a class='dropdown-item' href='index.php?at=".$id."'>$category</a>";
+                      echo "<a class='dropdown-item' href='index.php?cat=".$id."'>$category</a>";
                   }
                 }
                 else {
