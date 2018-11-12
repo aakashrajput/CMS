@@ -1,5 +1,10 @@
 <?php
 include ("include/header.php");
+$number_of_posts = 3;
+$all_posts_query = "SELECT * FROM posts WHERE status = 'publish'";
+$all_posts_run = mysqli_query($link,$all_posts_query);
+$all_posts = mysqli_num_rows($all_posts_run);
+$total_pages = ceil($all_posts / $number_of_posts);
 ?>
   <section>
     <div class="container">
@@ -62,7 +67,7 @@ include ("include/header.php");
 
             <?php
 
-              $query = "SELECT * FROM posts WHERE status = 'publish' ORDER BY id DESC";
+              $query = "SELECT * FROM posts WHERE status = 'publish' ORDER BY id DESC LIMIT $number_of_posts";
               $run = mysqli_query($link,$query);
               if(mysqli_num_rows($run) > 0){
                 while ($row = mysqli_fetch_array($run)){
@@ -117,20 +122,13 @@ include ("include/header.php");
             ?>
 
             <center><nav aria-label="..." class="pagination1">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#">Previous</a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                  </span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
+            <ul class="pagination">
+              <?php
+               for($i = 1; $i <= $total_pages; $i++){
+                  echo "<li class='page-item active'><a class='page-link' href='#'>$i</a></li>";
+              }
+              ?>
+            </ul>
             </nav></center>
             <?php
                 }
