@@ -1,10 +1,12 @@
 <div class="col-lg-6">
+  <form class="" action="index.php" method="post">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for...">
+      <input type="text" class="form-control" name="search-title" placeholder="Search for...">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
+        <input type="submit" value="Go" class="btn btn-default" name="search">
       </span>
     </div><!-- /input-group -->
+  </form>
   </div><!-- widgets close -->
 
   <div class="widgets">

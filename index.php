@@ -16,14 +16,26 @@ if(isset($_GET['cat'])) {
   $cat_name = $cat_row['category'];
 }
 
-$all_posts_query = "SELECT * FROM posts WHERE status = 'publish'";
-if(isset($cat_name)){
-  $all_posts_query .= " and categories = '$cat_name'";
+if(isset($_POST['search'])) {
+  $search = $_POST['search-title'];
+  $all_posts_query = "SELECT * FROM posts WHERE status = 'publish'";
+  $all_posts_query .= " and tags LIKE '%$search%'";
+  $all_posts_run = mysqli_query($link,$all_posts_query);
+  $all_posts = mysqli_num_rows($all_posts_run);
+  $total_pages = ceil($all_posts / $number_of_posts);
+  $posts_start_from = ($page_id - 1) * $number_of_posts;
+} else {
+  $all_posts_query = "SELECT * FROM posts WHERE status = 'publish'";
+  if(isset($cat_name)){
+    $all_posts_query .= " and categories = '$cat_name'";
+    }
+  $all_posts_run = mysqli_query($link,$all_posts_query);
+  $all_posts = mysqli_num_rows($all_posts_run);
+  $total_pages = ceil($all_posts / $number_of_posts);
+  $posts_start_from = ($page_id - 1) * $number_of_posts;
 }
-$all_posts_run = mysqli_query($link,$all_posts_query);
-$all_posts = mysqli_num_rows($all_posts_run);
-$total_pages = ceil($all_posts / $number_of_posts);
-$posts_start_from = ($page_id - 1) * $number_of_posts;
+
+
 ?>
   <section>
     <div class="container">
@@ -86,11 +98,21 @@ $posts_start_from = ($page_id - 1) * $number_of_posts;
 
             <?php
 
-              $query = "SELECT * FROM posts WHERE status = 'publish'";
-              if(isset($cat_name)){
-                $query .= "and categories = '$cat_name'";
+              if(isset($_POST['search'])){
+                $search = $_POST['search-title'];
+                $query  = "SELECT * FROM posts WHERE status = 'publish'";
+                $query .= "and tags LIKE  '%$search%'";
+                $query .= "ORDER BY id DESC LIMIT $posts_start_from, $number_of_posts";
+
+
+              } else {
+                $query = "SELECT * FROM posts WHERE status = 'publish'";
+                if(isset($cat_name)){
+                  $query .= "and categories = '$cat_name'";
+                }
+                $query .= "ORDER BY id DESC LIMIT $posts_start_from, $number_of_posts";
+
               }
-              $query .= "ORDER BY id DESC LIMIT $posts_start_from, $number_of_posts";
               $run = mysqli_query($link,$query);
               if(mysqli_num_rows($run) > 0){
                 while ($row = mysqli_fetch_array($run)){
