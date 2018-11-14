@@ -14,6 +14,7 @@ if(isset($_GET['post_id'])) {
     $month = $date['month'];
     $year = $date['year'];
     $title = $row['title'];
+    $tags = $row['tags'];
     $image = $row['image'];
     $author_image = $row['author_image'];
     $author = $row['author'];
@@ -56,33 +57,30 @@ if(isset($_GET['post_id'])) {
           <div class="related-posts">
             <h3>Related Posts</h3><hr>
             <div class="row">
+              <?php
+                $r_query = "SELECT * FROM posts WHERE status = 'publish' and title LIKE '%$title%' LIMIT 3 ";
+                $r_run = mysqli_query($link,$r_query);
+                while ($r_row = mysqli_fetch_array($r_run)){
+                  $r_id = $r_row['id'];
+                  $r_title = $r_row['title'];
+                  $r_image = $r_row['image'];
+               ?>
               <div class="col-sm-4">
-                <a href="#">
-                  <img src="assets/img/slider-1.png" alt="Slider one" />
-                  <h4>Post One Heading.</h4>
+                <a href="post.php?post_id=<?php echo $r_id; ?>">
+                  <img src="assets/img/<?php echo $r_image; ?>" alt="Slider one" />
+                  <h4><?php echo $r_title; ?></h4>
                 </a>
               </div>
-              <div class="col-sm-4">
-                <a href="#">
-                  <img src="assets/img/slider-1.png" alt="Slider one" />
-                  <h4>Post One Heading.</h4>
-                </a>
-              </div>
-              <div class="col-sm-4">
-                <a href="#">
-                  <img src="assets/img/slider-1.png" alt="Slider one" />
-                  <h4>Post One Heading.</h4>
-                </a>
-              </div>
+              <?php } ?>
             </div>
           </div>
           <div class="author">
             <div class="row">
               <div class="col-sm-3">
-                <img src="assets/img/icon.png" class="img-circle" alt="author pic">
+                <img src="assets/img/<?php echo $author_image; ?>" class="img-circle" alt="author pic">
               </div>
               <div class="col-sm-9">
-                <h4>Indian Charizard</h4>
+                <h4><?php echo ucfirst($author); ?></h4>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
               </div>
             </div>
