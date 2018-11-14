@@ -1,5 +1,29 @@
 <?php
 include ("include/header.php");
+
+if(isset($_GET['post_id'])) {
+  $post_id = $_GET['post_id'];
+  $query = "SELECT * FROM posts where status = 'publish' and id = $post_id";
+  $run = mysqli_query($link,$query);
+
+  if(mysqli_num_rows($run) > 0) {
+    $row = mysqli_fetch_array($run);
+    $id = $row['id'];
+    $date = getdate($row['date']);
+    $day = $date['mday'];
+    $month = $date['month'];
+    $year = $date['year'];
+    $title = $row['title'];
+    $image = $row['image'];
+    $author_image = $row['author_image'];
+    $author = $row['author'];
+    $categories = $row['categories'];
+    $post_data = $row['post_data'];
+
+  }else {
+    header('location: index.php');
+  }
+}
 ?>
   <section>
     <div class="container">
@@ -8,28 +32,24 @@ include ("include/header.php");
           <div class="post">
             <div class="row">
               <div class="col-md-2 post-date">
-                <div class="day">16</div>
-                <div class="month">Jan</div>
-                <div class="year">2019</div>
+                <div class="day"><?php echo $day; ?></div>
+                <div class="month"><?php echo $month; ?></div>
+                <div class="year"><?php echo $year; ?></div>
               </div>
               <div class="col-md-8 post-title">
-                <a href="#"><h2>This is demo heading for post one!</h2></a>
-                <p>Written By: <span>IndianCharizard</span></p>
+                <a href="post.php?post_id=<?php echo $id; ?>"><h2><?php echo $title; ?></h2></a>
+                <p>Written By: <span><?php echo ucfirst($author); ?></span></p>
               </div>
               <div class="col-md-2 profile-picture">
-                <img src="assets/img/icon.png" alt="profile picture" class="img-circle"/>
+                <img src="assets/img/<?php echo $author_image; ?>" alt="profile picture" class="img-circle"/>
               </div>
             </div>
-            <a href="#"><img src="assets/img/slider-3.png" alt="Post Image"></a>
+            <a href="assets/img/<?php echo $image; ?>"><img src="assets/img/<?php echo $image; ?>" alt="Post Image"></a>
             <p class="desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br><br>
-
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br><br>
-
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br><br>
+              <?php echo $post_data; ?>
             </p>
             <div class="bottom">
-              <span class="first"><i class="fa fa-folder"></i><a href="#"> Category</a></span>|
+              <span class="first"><i class="fa fa-folder"></i><a href="#"> <?php echo ucfirst($categories); ?></a></span>
               <span class="second"><i class="fa fa-comment"></i><a href="#"> Comments</a></span>
             </div>
           </div>
