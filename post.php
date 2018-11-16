@@ -99,7 +99,6 @@ if(isset($_GET['post_id'])) {
                 $c_username = $c_row['username'];
                 $c_image = $c_row['image'];
                 $c_comment = $c_row['comment'];
-              }
              ?>
 
             <hr>
@@ -112,6 +111,7 @@ if(isset($_GET['post_id'])) {
                 <p><?php echo $c_comment; ?></p>
               </div>
             </div>
+          <?php } ?>
           </div>
         <?php } ?>
           <div class="comment-box">
