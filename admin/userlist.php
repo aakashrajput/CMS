@@ -7,6 +7,11 @@
         <div class="card-header border-0">
           <h3 class="mb-0">Users List</h3>
         </div>
+        <?php
+        $query = "SELECT * FROM users ORDER BY id DESC";
+        $run = mysqli_query($link,$query);
+        if(mysqli_num_rows($run) > 0){
+         ?>
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
@@ -23,6 +28,20 @@
               </tr>
             </thead>
             <tbody>
+              <?php
+                while($row = mysqli_fetch_array($run)){
+                  $id = $row['id'];
+                  $first_name = ucfirst($row['first_name']);
+                  $last_name = $row['last_name'];
+                  $email = $row['email'];
+                  $username = $row['username'];
+                  $role = $row['role'];
+                  $image = $row['image'];
+                  $date = getdate ($row['date']);
+                  $day = $date['mday'];
+                  $month = substr($date['month'],0,3);
+                  $year = $date['year'];
+               ?>
               <tr>
                 <th scope="row">
                   <div class="media align-items-center">
@@ -30,109 +49,37 @@
                   </div>
                 </th>
                 <td>
-                  12/12/12
+                  <?php echo "$day/$month/$year"; ?>
                 </td>
                 <td>
-                  Aakash
+                <?php echo "$first_name $last_name"; ?>
                 </td>
                 <td>
                   <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> Indian Charizard
+                    <i class="bg-warning"></i><?php echo $username; ?>
                   </span>
                 </td>
                 <td>
-                  aakashsingh1999@gmail.com
+                  <?php echo $username; ?>
                 </td>
                 <td>
-                  Admin
+                  <?php echo $role; ?>
                 </td>
                 <td class="text-right">
                   11
                 </td>
                 <td class="text-right">
-                <a href="#">
+                <a href="edit-user.php?edit=<?php echo $id; ?>">
                   <i class="ni ni-settings-gear-65" style="font-size:20px"></i>
                 </a>
                 </td>
                 <td class="text-right">
-                <a href="#">
+                <a href="user.php?del=<?php echo $id; ?>">
                   <i class="ni ni-fat-remove" style="font-size:30px"></i>
                 </a>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <input type="checkbox">
-                  </div>
-                </th>
-                <td>
-                  12/12/12
-                </td>
-                <td>
-                  Aakash
-                </td>
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> Indian Charizard
-                  </span>
-                </td>
-                <td>
-                  aakashsingh1999@gmail.com
-                </td>
-                <td>
-                  Admin
-                </td>
-                <td class="text-right">
-                  11
-                </td>
-                <td class="text-right">
-                <a href="#">
-                  <i class="ni ni-settings-gear-65" style="font-size:20px"></i>
-                </a>
-                </td>
-                <td class="text-right">
-                <a href="#">
-                  <i class="ni ni-fat-remove" style="font-size:30px"></i>
-                </a>
-                </td>
-              </tr><tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <input type="checkbox">
-                  </div>
-                </th>
-                <td>
-                  12/12/12
-                </td>
-                <td>
-                  Aakash
-                </td>
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> Indian Charizard
-                  </span>
-                </td>
-                <td>
-                  aakashsingh1999@gmail.com
-                </td>
-                <td>
-                  Admin
-                </td>
-                <td class="text-right">
-                  11
-                </td>
-                <td class="text-right">
-                <a href="#">
-                  <i class="ni ni-settings-gear-65" style="font-size:20px"></i>
-                </a>
-                </td>
-                <td class="text-right">
-                <a href="#">
-                  <i class="ni ni-fat-remove" style="font-size:30px"></i>
-                </a>
-                </td>
-              </tr>
+            <?php } ?>
             </tbody>
           </table>
         </div>
@@ -172,6 +119,11 @@
             </ul>
           </nav>
         </div>
+        <?php
+            }else {
+              echo "<center><h2>No users Available</h2><br><hr></center>";
+            }
+         ?>
       </div>
     </div>
   </div>
