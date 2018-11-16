@@ -9,6 +9,28 @@ if(isset($_GET['del'])){
     $error = "User has not been deleted";
   }
 }
+
+if(isset($_POST['checkboxes'])){
+  foreach($_POST['checkboxes'] as $user_id){
+    $bulk_option = $_POST['bulk-option'];
+    if($bulk_option == 'Delete') {
+
+      $bulk_del_query = "DELETE FROM `users` WHERE `users`.`id` = $user_id";
+      mysqli_query($link, $bulk_del_query);
+
+    } else if($bulk_option == 'Author'){
+
+      $bulk_author_query = "UPDATE `users` SET `role` = 'author' WHERE `users`.`id` = $user_id";
+      mysqli_query($link, $bulk_author_query);
+
+    } else if($bulk_option == 'Admin'){
+
+      $bulk_admin_query = "UPDATE `users` SET `role` = 'admin' WHERE `users`.`id` = $user_id";
+      mysqli_query($link, $bulk_admin_query);
+
+    }
+  }
+}
  ?>
 <!DOCTYPE html>
 <html>

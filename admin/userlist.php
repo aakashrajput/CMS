@@ -12,12 +12,13 @@
         $run = mysqli_query($link,$query);
         if(mysqli_num_rows($run) > 0){
          ?>
+        <form class="" method="post">
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
 
             <thead class="thead-light">
               <tr>
-                <th scope="col"><input type="checkbox"></th>
+                <th scope="col"><input type="checkbox" id="selectallboxes"></th>
                 <th scope="col">Date</th>
                 <th scope="col">Name</th>
                 <th scope="col">Username</th>
@@ -46,7 +47,7 @@
               <tr>
                 <th scope="row">
                   <div class="media align-items-center">
-                    <input type="checkbox">
+                    <input type="checkbox" class="checkboxes" name="checkboxes[]" value="<?php echo $id; ?>">
                   </div>
                 </th>
                 <td>
@@ -64,7 +65,7 @@
                   <?php echo $username; ?>
                 </td>
                 <td>
-                  <?php echo $role; ?>
+                  <?php echo ucfirst($role); ?>
                 </td>
                 <td class="text-right">
                   11
@@ -86,7 +87,7 @@
         </div>
         <div class="card-footer py-4">
           <div class="form-group">
-              <select class="" name="" class="form-control">
+              <select class="" name="bulk-option" class="form-control">
                 <option value="Delete">Delete</option>
                 <option value="Author">Change to Author</option>
                 <option value="Admin">Change to Admin</option>
@@ -132,6 +133,7 @@
               echo "<center><h2>No users Available</h2><br><hr></center>";
             }
          ?>
+       </form>
       </div>
     </div>
   </div>

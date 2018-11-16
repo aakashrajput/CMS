@@ -35,6 +35,7 @@
 <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
 <!-- Argon JS -->
 <script src="assets/js/argon.min.js%3Fv=1.0.0"></script>
+<script src="assets/js/code.js"></script>
 <noscript>
 <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&ev=PageView&noscript=1" />
 </noscript>
