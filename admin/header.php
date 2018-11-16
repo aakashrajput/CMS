@@ -1,4 +1,15 @@
 <?php include ("../include/db.php"); ?>
+<?php
+if(isset($_GET['del'])){
+  $del_id = $_GET['del'];
+  $del_query = "DELETE FROM `users` WHERE `users`.`id` = $del_id";
+  if(mysqli_query($link,$del_query)){
+    $msg = "User has been deleted";
+  } else {
+    $error = "User has not been deleted";
+  }
+}
+ ?>
 <!DOCTYPE html>
 <html>
 

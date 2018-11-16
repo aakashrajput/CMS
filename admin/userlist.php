@@ -14,6 +14,7 @@
          ?>
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
+
             <thead class="thead-light">
               <tr>
                 <th scope="col"><input type="checkbox"></th>
@@ -94,6 +95,13 @@
           <div class="col-xs-8">
             <input type="submit" name="" value="Apply" class="btn btn-success">
             <a href="#" class="btn btn-primary">Add New</a>
+            <?php
+              if(isset($error)){
+                echo "<span style='color:red;' class='pull-right'>$error</span>";
+              } else if(isset($msg)) {
+                echo "<span style='color:green;' class='pull-right'>$msg</span>";
+              }
+             ?>
           </div>
           <nav aria-label="...">
             <ul class="pagination justify-content-end mb-0">
