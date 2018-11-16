@@ -126,6 +126,10 @@ if(isset($_GET['post_id'])) {
             $cs_query = "INSERT INTO `comments` (`id`, `date`, `name`, `username`, `post_id`, `email`, `image`, `comment`, `status`) VALUES (NULL, '$cs_date', '$cs_name', 'user', '$post_id', '$cs_email', 'favicon.png', '$cs_comment', 'pending')";
             if(mysqli_query($link,$cs_query)){
               $msg = "Comment Submited and waiting for approval";
+              $cs_name = "";
+              $cs_email = "";
+              //$cs_website = "";
+              $cs_comment = "";
             } else {
               $error_msg = "Comment has not been submited";
             }
@@ -138,15 +142,15 @@ if(isset($_GET['post_id'])) {
                 <form action="" method="post">
                   <div class="form-group">
                     <label for="full-name">Full name:*</label>
-                    <input type="text" id="full-name" name="name" class="form-control" placeholder="Full Name">
+                    <input type="text" value="<?php if(isset($cs_name)){echo $cs_name;} ?>" id="full-name" name="name" class="form-control" placeholder="Full Name">
                   </div>
                   <div class="form-group">
                     <label for="Email">Email:*</label>
-                    <input type="text" id="full-name" name="email" class="form-control" placeholder="Email">
+                    <input type="text" id="full-name" value="<?php if(isset($cs_email)){echo $cs_email;} ?>"  name="email" class="form-control" placeholder="Email">
                   </div>
                   <div class="form-group">
                     <label for="comment">Comment:*</label>
-                    <textarea  id="comment" cols="30" name="comment" rows="10" placeholder="Your Comment Here"></textarea>
+                    <textarea  id="comment"   cols="30" name="comment" rows="10" placeholder="Your Comment Here"><?php if(isset($cs_comment)){echo $cs_comment;} ?>"</textarea>
                  </div>
                  <input type="submit" name="submit" class="btn btn-primary" value="submit comment">
                  <?php if(isset($error_msg)){
