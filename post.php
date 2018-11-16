@@ -96,7 +96,7 @@ if(isset($_GET['post_id'])) {
               while($c_row = mysqli_fetch_array($c_run)){
                 $c_id = $c_row['id'];
                 $c_name = $c_row['name'];
-                $c_username = $c_row['username'];
+                $c_username = $c_row['name'];
                 $c_image = $c_row['image'];
                 $c_comment = $c_row['comment'];
              ?>
@@ -113,24 +113,47 @@ if(isset($_GET['post_id'])) {
             </div>
           <?php } ?>
           </div>
-        <?php } ?>
+        <?php }
+        if(isset($_POST['submit'])){
+          $cs_name = $_POST['name'];
+          $cs_email = $_POST['email'];
+          //$cs_website = $_POST['website'];
+          $cs_comment = $_POST['comment'];
+          $cs_date = time();
+          if(empty($cs_name) or empty($cs_email) or empty($cs_comment)){
+            $error_msg = "All (*) Fields are required";
+          } else {
+            $cs_query = "INSERT INTO `comments` (`id`, `date`, `name`, `username`, `post_id`, `email`, `image`, `comment`, `status`) VALUES (NULL, '$cs_date', '$cs_name', 'user', '$post_id', '$cs_email', 'favicon.png', '$cs_comment', 'pending')";
+            if(mysqli_query($link,$cs_query)){
+              $msg = "Comment Submited and waiting for approval";
+            } else {
+              $error_msg = "Comment has not been submited";
+            }
+          }
+        }
+        ?>
           <div class="comment-box">
             <div class="row">
               <div class="col-xs-12">
-                <form action="">
+                <form action="" method="post">
                   <div class="form-group">
                     <label for="full-name">Full name:*</label>
-                    <input type="text" id="full-name" class="form-control" placeholder="Full Name">
+                    <input type="text" id="full-name" name="name" class="form-control" placeholder="Full Name">
                   </div>
                   <div class="form-group">
                     <label for="Email">Email:*</label>
-                    <input type="text" id="full-name" class="form-control" placeholder="Email">
+                    <input type="text" id="full-name" name="email" class="form-control" placeholder="Email">
                   </div>
                   <div class="form-group">
                     <label for="comment">Comment:*</label>
-                    <textarea name="" id="comment" cols="30" rows="10" placeholder="Your Comment Here"></textarea>
+                    <textarea  id="comment" cols="30" name="comment" rows="10" placeholder="Your Comment Here"></textarea>
                  </div>
                  <input type="submit" name="submit" class="btn btn-primary" value="submit comment">
+                 <?php if(isset($error_msg)){
+                   echo "<span style='color:red;' class='pull-right'>$error_msg</span>";
+                 }else if(isset($msg)) {
+                    echo "<span style='color:green;' class='pull-right'>$msg</span>";
+                 } ?>
                 </form>
               </div>
             </div>
