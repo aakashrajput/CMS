@@ -58,7 +58,7 @@ if(isset($_GET['post_id'])) {
             <h3>Related Posts</h3><hr>
             <div class="row">
               <?php
-                $r_query = "SELECT * FROM posts WHERE status = 'publish' and title LIKE '%$title%' LIMIT 3 ";
+                $r_query = "SELECT * FROM posts WHERE status = 'publish' and title LIKE '%$title%' LIMIT 3";
                 $r_run = mysqli_query($link,$r_query);
                 while ($r_row = mysqli_fetch_array($r_run)){
                   $r_id = $r_row['id'];
@@ -85,29 +85,35 @@ if(isset($_GET['post_id'])) {
               </div>
             </div>
           </div>
+          <?php
+            $c_query = "SELECT * FROM comments WHERE status = 'approve'and post_id = $post_id ORDER BY id DESC";
+            $c_run = mysqli_query($link,$c_query);
+            if(mysqli_num_rows($c_run) > 0){
+          ?>
           <div class="comment">
-            <h3>Comments</h3><hr>
+            <h3>Comments</h3>
+            <?php
+              while($c_row = mysqli_fetch_array($c_run)){
+                $c_id = $c_row['id'];
+                $c_name = $c_row['name'];
+                $c_username = $c_row['username'];
+                $c_image = $c_row['image'];
+                $c_comment = $c_row['comment'];
+              }
+             ?>
+
+            <hr>
             <div class="row single-comment">
               <div class="col-sm-2">
-                <img src="assets/img/icon.png" class="img/circle" alt="profie picture">
+                <img src="assets/img/<?php echo $c_image; ?>" class="img/circle" alt="profie picture">
               </div>
               <div class="col-sm-10">
-                <h4>Indian Charizard</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <h4><?php echo ucfirst($c_username); ?></h4>
+                <p><?php echo $c_comment; ?></p>
               </div>
             </div>
-
-            <div class="row single-comment">
-              <div class="col-sm-2">
-                <img src="assets/img/icon.png" class="img/circle" alt="profie picture">
-              </div>
-              <div class="col-sm-10">
-                <h4>Mega Charizard</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-              </div>
-            </div>
-
           </div>
+        <?php } ?>
           <div class="comment-box">
             <div class="row">
               <div class="col-xs-12">
