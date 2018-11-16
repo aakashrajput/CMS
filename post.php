@@ -3,6 +3,8 @@ include ("include/header.php");
 
 if(isset($_GET['post_id'])) {
   $post_id = $_GET['post_id'];
+  $views_query = "UPDATE `posts` SET `views` = views + 1 WHERE `posts`.`id` = $post_id";
+  mysqli_query($link,$views_query);
   $query = "SELECT * FROM posts where status = 'publish' and id = $post_id";
   $run = mysqli_query($link,$query);
 
@@ -150,7 +152,7 @@ if(isset($_GET['post_id'])) {
                   </div>
                   <div class="form-group">
                     <label for="comment">Comment:*</label>
-                    <textarea  id="comment"   cols="30" name="comment" rows="10" placeholder="Your Comment Here"><?php if(isset($cs_comment)){echo $cs_comment;} ?>"</textarea>
+                    <textarea  id="comment"   cols="30" name="comment" rows="10" placeholder="Your Comment Here"><?php if(isset($cs_comment)){echo $cs_comment;} ?></textarea>
                  </div>
                  <input type="submit" name="submit" class="btn btn-primary" value="submit comment">
                  <?php if(isset($error_msg)){
