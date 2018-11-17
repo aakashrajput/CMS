@@ -16,6 +16,8 @@ if(isset($_GET['del'])){
   }
 }
 
+/**** Comment Section *****/
+
 if(isset($_GET['del_comment'])){
   $del_id = $_GET['del_comment'];
   $del_check_query = "SELECT * FROM comments WHERE id = $del_id";
@@ -63,6 +65,61 @@ if(isset($_GET['unapprove'])){
     header ("location: index.php");
   }
 }
+
+/** Comments Section end ****/
+
+/**** Posts Section *****/
+
+if(isset($_GET['del_post'])){
+  $del_id = $_GET['del_post'];
+  $del_check_query = "SELECT * FROM posts WHERE id = $del_id";
+  $del_check_run = mysqli_query($link, $del_check_query);
+  if(mysqli_num_rows($del_check_run)>0){
+    $del_query = "DELETE FROM `posts` WHERE `posts`.`id` = $del_id";
+    if(mysqli_query($link,$del_query)){
+      $msg = "comment has been deleted";
+    } else {
+      $error = "comment has not been deleted";
+    }
+  }else {
+    header ("location: index.php");
+  }
+}
+
+if(isset($_GET['approve_post'])){
+  $approve_id = $_GET['approve_post'];
+  $approve_check_query = "SELECT * FROM posts WHERE id = $approve_id";
+  $approve_check_run = mysqli_query($link, $approve_check_query);
+  if(mysqli_num_rows($approve_check_run) > 0){
+    $approve_query = "UPDATE `posts` SET `status` = 'publish' WHERE `posts`.`id` = $approve_id";
+    if(mysqli_query($link,$approve_query)){
+      $msg = "Post has been Published";
+    } else {
+      $error = "Post has not been Published";
+    }
+  }else {
+    header ("location: index.php");
+  }
+}
+
+if(isset($_GET['unapprove_post'])){
+  $unapprove_id = $_GET['unapprove_post'];
+  $unapprove_check_query = "SELECT * FROM posts WHERE id = $unapprove_id";
+  $unapprove_check_run = mysqli_query($link, $unapprove_check_query);
+  if(mysqli_num_rows($unapprove_check_run) > 0){
+    $unapprove_query = "UPDATE `posts` SET `status` = 'unpublish' WHERE `posts`.`id` = $unapprove_id";
+    if(mysqli_query($link,$unapprove_query)){
+      $msg = "posts has been unapproved";
+    } else {
+      $error = "posts has not been unapproved";
+    }
+  }else {
+    header ("location: index.php");
+  }
+}
+
+/** Posts Section end ****/
+
 
 if(isset($_POST['checkboxes'])){
   foreach($_POST['checkboxes'] as $user_id){
@@ -226,7 +283,17 @@ if(isset($_POST['checkboxes'])){
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="user.php">
-              <i class="ni ni-bullet-list-67 text-red"></i> Users List
+              <i class="ni ni-single-02 text-red"></i> Users List
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="comments.php">
+              <i class="ni ni-world text-green"></i> Comments List
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="postslist.php">
+              <i class="ni ni-single-copy-04 text-orange"></i> Posts List
             </a>
           </li>
           <!--li class="nav-item">
