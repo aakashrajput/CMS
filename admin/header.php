@@ -2,11 +2,65 @@
 <?php
 if(isset($_GET['del'])){
   $del_id = $_GET['del'];
-  $del_query = "DELETE FROM `users` WHERE `users`.`id` = $del_id";
-  if(mysqli_query($link,$del_query)){
-    $msg = "User has been deleted";
-  } else {
-    $error = "User has not been deleted";
+  $del_check_query = "SELECT * FROM users WHERE id = $del_id";
+  $del_check_run = mysqli_query($link, $del_check_query);
+  if(mysqli_num_rows($del_check_run)>0){
+    $del_query = "DELETE FROM `users` WHERE `users`.`id` = $del_id";
+    if(mysqli_query($link,$del_query)){
+      $msg = "User has been deleted";
+    } else {
+      $error = "User has not been deleted";
+    }
+  }else {
+    header ("location: index.php");
+  }
+}
+
+if(isset($_GET['del_comment'])){
+  $del_id = $_GET['del_comment'];
+  $del_check_query = "SELECT * FROM comments WHERE id = $del_id";
+  $del_check_run = mysqli_query($link, $del_check_query);
+  if(mysqli_num_rows($del_check_run)>0){
+    $del_query = "DELETE FROM `comments` WHERE `comments`.`id` = $del_id";
+    if(mysqli_query($link,$del_query)){
+      $msg = "comment has been deleted";
+    } else {
+      $error = "comment has not been deleted";
+    }
+  }else {
+    header ("location: index.php");
+  }
+}
+
+if(isset($_GET['approve'])){
+  $approve_id = $_GET['approve'];
+  $approve_check_query = "SELECT * FROM comments WHERE id = $approve_id";
+  $approve_check_run = mysqli_query($link, $approve_check_query);
+  if(mysqli_num_rows($approve_check_run) > 0){
+    $approve_query = "UPDATE `comments` SET `status` = 'approve' WHERE `comments`.`id` = $approve_id";
+    if(mysqli_query($link,$approve_query)){
+      $msg = "comment has been Approved";
+    } else {
+      $error = "comment has not been Approved";
+    }
+  }else {
+    header ("location: index.php");
+  }
+}
+
+if(isset($_GET['unapprove'])){
+  $unapprove_id = $_GET['unapprove'];
+  $unapprove_check_query = "SELECT * FROM comments WHERE id = $unapprove_id";
+  $unapprove_check_run = mysqli_query($link, $unapprove_check_query);
+  if(mysqli_num_rows($unapprove_check_run) > 0){
+    $unapprove_query = "UPDATE `comments` SET `status` = 'unapprove' WHERE `comments`.`id` = $unapprove_id";
+    if(mysqli_query($link,$unapprove_query)){
+      $msg = "comment has been unapproved";
+    } else {
+      $error = "comment has not been unapproved";
+    }
+  }else {
+    header ("location: index.php");
   }
 }
 
