@@ -16,6 +16,22 @@ if(isset($_GET['del'])){
   }
 }
 
+if(isset($_GET['del_cat'])){
+  $del_id = $_GET['del_cat'];
+  $del_check_query = "SELECT * FROM categories WHERE id = $del_id";
+  $del_check_run = mysqli_query($link, $del_check_query);
+  if(mysqli_num_rows($del_check_run)>0){
+    $del_query = "DELETE FROM `categories` WHERE `categories`.`id` = $del_id";
+    if(mysqli_query($link,$del_query)){
+      $msg = "category has been deleted";
+    } else {
+      $error = "category has not been deleted";
+    }
+  }else {
+    header ("location: index.php");
+  }
+}
+
 /**** Comment Section *****/
 
 if(isset($_GET['del_comment'])){
