@@ -149,7 +149,7 @@ include ("connection.php");
         <div class="table-responsive">
           <table class="table align-items-center table-dark table-flush">
             <?php
-                                    $res = mysqli_query($link,"select * from user_reg ORDER BY id DESC LIMIT 4");
+                                    $res = mysqli_query($link,"select * from users ORDER BY id DESC LIMIT 4");
                                       echo "<thead class='thead-dark'>";
                                       echo "<tr>";
                                           echo "<th scope='col'>";echo "User Name";echo "</th>";
